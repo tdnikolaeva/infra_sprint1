@@ -1,0 +1,12 @@
+[Unit]
+Description=Gunicorn daemon for Kittygram
+After=network.target
+
+[Service]
+User=ntd
+Group=www-data
+WorkingDirectory=/mnt/c/Users/ntd/PycharmProjects/infra_sprint1/backend
+ExecStart=/mnt/c/Users/ntd/PycharmProjects/infra_sprint1/venv/bin/gunicorn --workers 3 --max-requests 1000 --bind 127.0.0.1:8080 kittygram_backend.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
